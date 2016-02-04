@@ -21,16 +21,18 @@ router.get('/restaurants/:searchTerm', function(req, res){
 
 //// this is request/ npm
 var options = {
-  url: 'https://data.kingcounty.gov/resource/gkhn-e8mn.json',
+  // url: 'https://data.kingcounty.gov/resource/gkhn-e8mn.json',
+  ///// below will still give me entire .json object. the whole list.
+  // url: ('https://data.kingcounty.gov/resource/gkhn-e8mn.json'+'?$q='+req.params.searchTerm),
+  url: ('https://data.kingcounty.gov/resource/gkhn-e8mn.json?$$app_token='+process.env.APP_TOKEN+'&$q='+req.params.searchTerm)
   //// info comes back the same whether you specify .json or not
-  params: {
-        $q: req.params.searchTerm
-        // omdbapi = how search term is constructed. s="slfkj" based on what api is looking for. http automatically generates the ?=
-  },
-  headers: {
-    'X-App-Token': process.env.APP_TOKEN
-  }
-  /// query here?
+  // headers: {
+  //   'X-App-Token': process.env.APP_TOKEN
+  // },
+  // params: {
+  //       $q: req.params.searchTerm
+  //       // omdbapi = how search term is constructed. s="slfkj" based on what api is looking for. http automatically generates the ?=
+  // }
 };
  
 function callback(error, response, body) {
