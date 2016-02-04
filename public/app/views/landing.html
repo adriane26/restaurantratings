@@ -12,12 +12,11 @@
     		<input type="submit" class="btn btn-primary">
   		</div>
 	</form>
-</div>
-
-<div class="well" ng-repeat="restaurant in restaurants">
+  <div ng-if="restaurants.length != 0" class="well" ng-repeat="restaurant in restaurants">
   <h2> 
-    <a ng-href="/#!/restaurants/{{restaurant.id}}">
-        	{{restaurant.name}} - {{restaurant.address}}
+    <a ng-href="/restaurants/{{restaurant.id}}">
+          {{restaurant.name}} - {{restaurant.address}}
     </a>
   </h2>
+</div>
 </div>

@@ -1,40 +1,57 @@
 ///// CRUD FUNCTIONALITY, HANDLES SERVER SIDE THINGS
 // $scope.searchTerm, etc. should not go here.
-
+// console.log('hello')
 var express = require('express');
 var request = require('request');
 var router = express.Router();
 
 router.get('/', function(req, res){
-  res.sendFile('./public/app/views/landing.html');
+	console.log('here')
+  // res.sendFile('./public/app/views/landing.html');
 });
 
-// node -
-// .get ('/api/restaurants' request: 'http://data.gov'
-// 	res.send(data))
+router.get('/restaurants/:searchTerm', function(req, res){
+	// req(options, callback);
+	// console.log(data);
+	// res.send(data);
 
-router.get('/api/restaurants', function(req, res){
-	res.send(data);
-});
+/// do I close it below or should  I include the options/callback function?
+// });
 
 
 //// this is request/ npm
 var options = {
-  url: 'https://data.kingcounty.gov/resource/gkhn-e8mn',
-
+  url: 'https://data.kingcounty.gov/resource/gkhn-e8mn.json',
+  //// info comes back the same whether you specify .json or not
+  params: {
+        $q: req.params.searchTerm
+        // omdbapi = how search term is constructed. s="slfkj" based on what api is looking for. http automatically generates the ?=
+  },
   headers: {
     'X-App-Token': process.env.APP_TOKEN
   }
+  /// query here?
 };
  
 function callback(error, response, body) {
+	console.log('this is inside the named callback')
   if (!error && response.statusCode == 200) {
     var info = JSON.parse(body);
-    console.log(info);
+    	///// this is what is showing up in my terminal console log
+    // console.log(info);
+    // res.send('yououououasdflkhe')
   }
 };
- 
-request(options, callback);
+request(options, function(err, response, body){
+	console.log(options);
+	res.send(JSON.parse(response.body))
+});
+
+//// below closes the router.get api/restaurants
+});
+
+//// below should only be called when there is a searchTerm.  (if there's no search term, add in a warning to search for something)
+
 
 
 // angular -
@@ -42,46 +59,3 @@ request(options, callback);
 
 module.exports = router;
 
-
-
-///// ACCORDING TO AIRPLANE EXAMPLE, CRUD FUNCTIONALITY WILL GO HERE.
-
-// var express = require('express');
-// var Airplane = require('../models/airplane');
-// var router = express.Router();
-
-// router.route('/')
-//   .get(function(req, res) {
-//     Airplane.find(function(err, airplanes) {
-//       if (err) return res.status(500).send(err);
-//       res.send(airplanes);
-//     });
-//   })
-//   .post(function(req, res) {
-//     Airplane.create(req.body, function(err, airplane) {
-//       if (err) return res.status(500).send(err);
-//       res.send(airplane);
-//     });
-//   });
-
-// router.route('/:id')
-//   .get(function(req, res) {
-//     Airplane.findById(req.params.id, function(err, airplane) {
-//       if (err) return res.status(500).send(err);
-//       res.send(airplane);
-//     });
-//   })
-//   .put(function(req, res) {
-//     Airplane.findByIdAndUpdate(req.params.id, req.body, function(err) {
-//       if (err) return res.status(500).send(err);
-//       res.send({'message': 'success'});
-//     });
-//   })
-//   .delete(function(req, res) {
-//     Airplane.findByIdAndRemove(req.params.id, function(err) {
-//       if (err) return res.status(500).send(err);
-//       res.send({'message': 'success'});
-//     });
-//   });
-
-// module.exports = router;

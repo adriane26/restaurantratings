@@ -1,48 +1,72 @@
-//// this is LINKED TO VIEWS ... should my http call go here?
+//// this is LINKED TO VIEWS ... 
 
 //// CAN CREATE A MODULE FOR CONTROLLERS LIKE IN AIRPLANES OR CAN CHAIN THEM ALL TOGETHER??
 
 
 //// RESTAURANT IS A CUSTOM SERVICE WE CREATED. (AIRPLANES). DO I NEED THIS?? DO I NEED RESTAURANT SERVICES?? services.js
-var appCtrls = 
-angular.module('RestaurantCtrls', []);
+var appCtrls = angular.module('RestaurantCtrls', []);
 /// restaurantServices would go in []
 
 
-appCtrls.controller('MainCtrl', ['$scope', '$location', '$http', 'Restaurant', function($scope, $location, $http, Restaurant) {
-  
-$scope.searchTerm = '';
+/////////// MAIN CONTROLLER: DOES SEARCHES
+appCtrls.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+        //// should i define $http here??
 
-$scope.search = function() {
-  var req = {
-    // url: "https://data.kingcounty.gov/resource/gkhn-e8mn",
-    url: '/MainCtrl/api/restaurants',
-    method: 'GET',
-    params: {
-      $q: $scope.searchTerm
+        // $http:'mainCtrl/api/restaurants'
+  $scope.searchTerm = '';
+  $scope.restaurants = [];
+
+  /// in original omdb example, calling with $http. how do i reference request/express instead? 
+  $scope.search = function(){
+    //request object ... is already defined in my mainCtrl?? 
+    var req = {
+      url: '/api/restaurants/'+$scope.searchTerm,
+      method: 'GET',
+      // $http: 'MainCtrl/api/restaurants',
+      // params: {
+        // $q: $scope.searchTerm
+        // omdbapi = how search term is constructed. s="slfkj" based on what api is looking for. http automatically generates the ?=
+      // }
     }
-  }};
+      $http(req).then(function success(response){
+        console.log(response);
+      if (response.status === 200){
+        $scope.restaurants = response.data;
+        console.log($scope.restaurants)
+      }
 
-/////////// $http will go get the npm request info
+    }, function error(response){
+      console.log(response);
+    });
+    $scope.searchTerm = '';
+  };
+  // $scope.$watch(function(){
+  //   return $scope.restaurants;
+  // }, function(x, y){
+  // })
 
-$scope.restaurants = [];
 
-$http.get(req).then(function success(res) {
-  if (res.status === 200) {
-    $scope.restaurants = res.data.body;
-  }
-  console.log(res);
-}, function error(res) {
-  console.log(res);
-});
+// }]);
+
+
+
+
+
+
 
 //// use this when i set up a clickthrough/restaurant show ?
-  Restaurant.query(function success(data) {
-    $scope.restaurants = data;
-  }, function error(data) {
-    console.log(data);
-  });
+  // Restaurant.query(function success(data) {
+  //   $scope.restaurants = data;
+  // }, function error(data) {
+  //   console.log(data);
+  // });
 }]);
+
+
+
+
+
+
 
 //////////// new controller starts here
 appCtrls.controller('RestaurantShowCtrl', ['$scope','$routeParams', 'Restaurant', function($scope, $routeParams, Restaurant){
