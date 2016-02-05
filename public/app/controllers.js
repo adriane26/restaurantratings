@@ -1,8 +1,6 @@
 ////FRONT END. this is LINKED TO VIEWS ... THIS IS ANGULAR / CLIENT SIDE
 
-
-//// RESTAURANT IS A CUSTOM SERVICE WE CREATED. (AIRPLANES). DO I NEED THIS?? DO I NEED RESTAURANT SERVICES?? services.js
-var appCtrls = angular.module('RestaurantCtrls', ['RestaurantServices']);
+var appCtrls = angular.module('RestaurantCtrls', ['RestaurantServices', 'RestaurantFilters']);
 
 
 /////////// MAIN CONTROLLER: DOES SEARCHES

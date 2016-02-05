@@ -1,6 +1,5 @@
 // server.js
  
-
 var restaurantServices = angular.module('RestaurantServices', []);
 
 restaurantServices.service('FoodPlace', [ function(){

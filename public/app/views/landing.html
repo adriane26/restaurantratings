@@ -12,7 +12,7 @@
     		<input type="submit" class="btn btn-primary">
   		</div>
 	</form>
-  <div ng-if="restaurants.length != 0" class="well" ng-repeat="restaurant in restaurants">
+  <div ng-if="restaurants.length != 0" class="well well-sm" ng-repeat="restaurant in restaurants">
   <h2> <!-- ng-click="addToFoodPlace()" -->
     <a ng-href="/restaurant/" ng-click="saveFoodPlace(restaurant)">
           {{restaurant.name}} - {{restaurant.address}}
