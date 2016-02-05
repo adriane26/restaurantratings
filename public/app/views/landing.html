@@ -4,7 +4,7 @@
 <h1> you have landed </h1>
 
 <h2>Did your restaurant pass inspection?</h2>
-<div class="container" ng-controller="MainCtrl">
+<div class="container">
 	<form class="form" ng-submit="search()">
   		<div class="form-group">
     		<label>Let's find out:</label>
@@ -13,10 +13,10 @@
   		</div>
 	</form>
   <div ng-if="restaurants.length != 0" class="well" ng-repeat="restaurant in restaurants">
-  <h2> 
-    <a ng-href="/restaurants/{{restaurant.id}}">
+  <h2> <!-- ng-click="addToFoodPlace()" -->
+    <a ng-href="/restaurant/" ng-click="saveFoodPlace(restaurant)">
           {{restaurant.name}} - {{restaurant.address}}
     </a>
   </h2>
-</div>
-</div>
+</div> <!-- closes ng-repeat div -->
+</div> <!-- closes mainCtrl, -->

@@ -1,4 +1,4 @@
-///// CRUD FUNCTIONALITY, HANDLES SERVER SIDE THINGS
+/////BACK END. CRUD FUNCTIONALITY, HANDLES SERVER SIDE THINGS.
 // $scope.searchTerm, etc. should not go here.
 // console.log('hello')
 var express = require('express');
@@ -14,11 +14,6 @@ router.get('/restaurants/:searchTerm', function(req, res){
 	// req(options, callback);
 	// console.log(data);
 	// res.send(data);
-
-/// do I close it below or should  I include the options/callback function?
-// });
-
-
 //// this is request/ npm
 var options = {
   // url: 'https://data.kingcounty.gov/resource/gkhn-e8mn.json',
@@ -45,15 +40,19 @@ function callback(error, response, body) {
   }
 };
 request(options, function(err, response, body){
-	console.log(options);
+	// console.log(options);
 	res.send(JSON.parse(response.body))
 });
 
 //// below closes the router.get api/restaurants
 });
 
-//// below should only be called when there is a searchTerm.  (if there's no search term, add in a warning to search for something)
+/////// when we click through to see a restaurant expanded view: 
 
+// router.get('/restaurants/:id', function(req, res){
+  //// i'm not doing anything on back end... just taking that business and showing more info.
+
+// }); /// closes router.get('/restaurants/:id');
 
 
 // angular -
