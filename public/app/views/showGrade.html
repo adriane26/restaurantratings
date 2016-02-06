@@ -20,7 +20,9 @@
 </div>
 
 <!-- the vote count will display upon the vote submit click -->
+
 <div ng-show="isDisplayed">
-	<h3>Yes: {{vote.yes_count}}</h3>
-	<h3>No: {{vote.no_count}} </h3>
+<!-- <chartist class="ct-chart" chartist-data="chartist.barData" chartist-chart-type="Bar"></chartist> -->
+	<h3 id="yes">Yes: {{vote.yes_count}}</h3>
+	<h3 id="no">No: {{vote.no_count}} </h3>
 </div>

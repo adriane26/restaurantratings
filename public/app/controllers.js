@@ -51,8 +51,8 @@ appCtrls.controller('MainCtrl', ['$scope', '$http', '$routeParams', 'FoodPlace',
 
 
 
-//// FIGURE OUT WHAT ROUTE PARAMS ARE, DO I NEED TO CHANGE TO business_id/some other id that's given by the results?? 
-//////////// new controller starts here. THIS WILL DISPLAY THE EXTENDED VIEW/INFO AND THE LETTER GRADE
+
+///////////THIS WILL DISPLAY THE EXTENDED VIEW/INFO AND THE LETTER GRADE
 appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', function($scope, $routeParams, FoodPlace, Vote){
   $scope.business = FoodPlace.get();
   console.log($scope.business);
@@ -70,38 +70,29 @@ appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', f
   ////////// let's add in database things here.
   $scope.addVotes = function(){
 
-  	console.log($scope.vote);
+  	// console.log($scope.vote);
 
   	Vote.save({business_id: $routeParams.id, vote: $scope.vote}, function success(data) {
-  		console.log(data);
+  		// console.log("this is my data" +data);
   		$scope.vote = data;
+      console.log("this is $scope.vote " + $scope.vote);
+      console.log("this is my yes_count " + $scope.vote.yes_count);
+      console.log("this is my no_count " + $scope.vote.no_count);
+
+//////// filter built into function ...
+      if($scope.vote.yes_count >= $scope.vote.no_count) {
+      //// span id="yes" turns red
+      document.querySelector("#yes").style.color = "red";
+    } else {
+      /// span id="no" turns red 
+      document.querySelector("#no").style.color = "red";
+    }
   	}, function error(data) {
   		console.log(data);
   	});
 
-// 		Vote.save({business_id: $routeParams.id}, 
-// 		function success(data){
-// 			$scope.vote = data;
-// 			if (value === "yes_count"){
-// 				Vote.yes_count ++1;
-// 			} else {
-// 				if (value === "no_count"){
-// 					Vote.no_count ++1;
-// 				}
-// 			}
-// 			// 	db.products.update(
-//    // { sku:  "abc123" },
-//    // { $inc: { quantity: -2, "metrics.orders": 1 } }
-// // )
-// 	}, 
-// 	function error(data){
-// 		console.log(data);
-// 	});
+  }; /// closes addVotes()
 
-  };
-
-  // $scope.Vote = Vote.get();
-  
 
   // Restaurant = {
   //   id : $routeParams.id
@@ -116,7 +107,7 @@ appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', f
 	// 	console.log(data);
 	// })
 
-}]);
+}]); /// ENDS SHOW CONTROLLER ///
 
 
 

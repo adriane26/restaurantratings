@@ -34,68 +34,17 @@ appFilters.filter('graded', function(){
 });
 
 
-
-
-// appFilters.filter('customCurrency', function() { 
-
-//   // Create the return function and set the required parameter name to **input**
-//   // setup optional parameters for the currency symbol and location (left or right of the amount)
-//   return function(input, symbol, place) {
-
-//     // Ensure that we are working with a number
-//     if(isNaN(input)) {
-//       return input;
-//     } else {
-
-//       // Check if optional parameters are passed, if not, use the defaults
-//       var symbol = symbol || '$';
-//       var place = place === undefined ? true : place;
-
-//       // Perform the operation to set the symbol in the right location
-//       if( place === true) {
-//         return symbol + input;
-//       } else {
-//         return input + symbol;
-//       }
-
-//     }
-//     }
-
-// });
-
-
-
-// appFilters.filter('capitalize', function() {
-
-//   // Create the return function and set the required parameter as well as an optional paramater
-//   return function(input, char) {
-
-//     if (isNaN(input)) {
-
-//       // If the input data is not a number, perform the operations to capitalize the correct letter.
-//       var char = char - 1 || 0;
-//       var letter = input.charAt(char).toUpperCase();
-//       var out = [];
-
-//       for (var i = 0; i < input.length; i++) {
-
-//         if (i == char) {
-//           out.push(letter);
-//         } else {
-//           out.push(input[i]);
-//         }
-        
-//       }
-
-//       return out.join('');
-
-//     } else {
-//       return input;
-//     }
-
-//   }
-
-// });
+appFilters.filter('yesOrNo', function(){
+	return function() {
+		if(Vote.yes_count >= Vote.no_count) {
+			//// span id="yes" turns red
+			document.querySelector("#yes").style.color = "red";
+		} else {
+			/// span id="no" turns red 
+			document.querySelector("#no").style.color = "red";
+		}
+	}
+});
 
 
 // //// this will filter results, modify to filter search results
