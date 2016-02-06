@@ -9,6 +9,7 @@ var app 		= express();
 ///// require mongoose/database stuff here////////////
 var mongoose = require('mongoose');
 // var Comment = require('./models/comment');
+var Vote = require('./models/vote');
 mongoose.connect('mongodb://localhost/restaurantratings');
 
 ////// scotch.io says this: 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 ///controllers here //////////////
 app.use('/api', require('./controllers/MainCtrl'));
+app.use('/restaurant', require('./controllers/ShowCtrl'));
 // app.use('/api/restaurants', require('./controllers/MainCtrl'));
 //// other than our api, express will then default to angular to handle front end
 app.get('/*', function(req, res) {
@@ -29,12 +31,6 @@ app.get('/*', function(req, res) {
 });
 
 
-
-
 // var port = process.env.PORT || 3000;
 console.log("HEY LOOK IT'S WORKING!");
-// httpServer.listen(process.env.PORT || 3000);
-// httpsServer.listen(process.env.SSLPORT || 4000); 
-
-  // console.log("RUNNING");
-  app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000);

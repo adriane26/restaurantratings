@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
+
+
+	/*I want a typewriter/stamp looking font for grade. have a stamp animation*/
+
+body {
+	font-family: "Karla";
+}
+
+#errorPage {
+	/*background-image: url('images/404plate.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+*/	/*background-color: blue;*/
+}
+

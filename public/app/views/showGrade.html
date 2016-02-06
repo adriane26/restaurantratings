@@ -8,3 +8,18 @@
 <div>
 	<h1> Your rating is ... {{business[0].inspection_score | graded}} </h1>
 </div>
+
+<div> 
+	<h3> Is this place a Dirty Dish? </h3>
+	<form>
+  		<input type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
+  		<input type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
+  		<input type="submit" class="btn btn-primary" ng-click="addVotes()">
+  		<!-- this will be a find or create/ , if found, then update yes/no, if not found, create -->
+	</form>
+</div>
+
+<!-- <div ng-show="showVotes"> -->
+<div>
+	<h3> Yes: {{vote.yes_count}} | No: {{vote.no_count}} </h3>
+</div>

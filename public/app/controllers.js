@@ -10,18 +10,12 @@ appCtrls.controller('MainCtrl', ['$scope', '$http', '$routeParams', 'FoodPlace',
         // $http:'mainCtrl/api/restaurants'
   $scope.searchTerm = '';
   $scope.restaurants = [];
-  // $scope.Restaurant = {};
-  /// in original omdb example, calling with $http. how do i reference request/express instead? 
+
   $scope.search = function(){
     //request object ... is already defined in my mainCtrl?? 
     var req = {
     url: '/api/restaurants/'+$scope.searchTerm,
-    method: 'GET',
-      // $http: 'MainCtrl/api/restaurants',
-      // params: {
-        // $q: $scope.searchTerm
-        // omdbapi = how search term is constructed. s="slfkj" based on what api is looking for. http automatically generates the ?=
-      // }
+    method: 'GET'
     }
     $http(req).then(function success(response){
         // console.log(response);
@@ -59,23 +53,55 @@ appCtrls.controller('MainCtrl', ['$scope', '$http', '$routeParams', 'FoodPlace',
 
 //// FIGURE OUT WHAT ROUTE PARAMS ARE, DO I NEED TO CHANGE TO business_id/some other id that's given by the results?? 
 //////////// new controller starts here. THIS WILL DISPLAY THE EXTENDED VIEW/INFO AND THE LETTER GRADE
-appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', function($scope, $routeParams, FoodPlace){
+appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', function($scope, $routeParams, FoodPlace, Vote){
   $scope.business = FoodPlace.get();
-  // $scope.business = FoodPlace.getBusiness();
-	// $scope.restaurant = {};
-  // $routeParams.id = Restaurant.id;
-  // console.log($routeParams);
   console.log($scope.business);
-  // console.log($scope.Restaurant);
+  $scope.yesVote;
+  $scope.noVote;
+  $scope.vote;
 
-  // console.log($scope.restaurant);
+  $scope.changeChoice = function(choice) {
+  	//$scope.formData = {};
+  	$scope.vote = choice;
+  	console.log('My Choice', choice);
+  	console.log('My vote being sent', $scope.vote);
+  }
 
-     //// use localstorage
+  ////////// let's add in database things here.
+  $scope.addVotes = function(){
 
+  	console.log($scope.vote);
 
+  	Vote.save({business_id: $routeParams.id, vote: $scope.vote}, function success(data) {
+  		console.log(data);
+  		$scope.vote = data;
+  	}, function error(data) {
+  		console.log(data);
+  	});
 
+// 		Vote.save({business_id: $routeParams.id}, 
+// 		function success(data){
+// 			$scope.vote = data;
+// 			if (value === "yes_count"){
+// 				Vote.yes_count ++1;
+// 			} else {
+// 				if (value === "no_count"){
+// 					Vote.no_count ++1;
+// 				}
+// 			}
+// 			// 	db.products.update(
+//    // { sku:  "abc123" },
+//    // { $inc: { quantity: -2, "metrics.orders": 1 } }
+// // )
+// 	}, 
+// 	function error(data){
+// 		console.log(data);
+// 	});
 
+  };
 
+  // $scope.Vote = Vote.get();
+  
 
   // Restaurant = {
   //   id : $routeParams.id
