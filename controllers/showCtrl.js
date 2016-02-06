@@ -8,21 +8,7 @@ var express = require('express');
 var Vote = require('../models/vote');
 var router = express.Router();
 
-//// NEED TO START YES_COUNT AND NO_COUNT AT 0 ?
 
-// router.route('/')
-//   .get(function(req, res) {
-//     Airplane.find(function(err, airplanes) {
-//       if (err) return res.status(500).send(err);
-//       res.send(airplanes);
-//     });
-//   })
-//   .post(function(req, res) {
-//     Airplane.create(req.body, function(err, airplane) {
-//       if (err) return res.status(500).send(err);
-//       res.send(airplane);
-//     });
-//   });
 
 router.route('/')
   .post(function(req, res) {
@@ -45,7 +31,10 @@ router.route('/')
   	};
 
   	Vote.findOneAndUpdate({business_id: req.body.business_id}, update, options, function(error, doc){
-  		console.log(error, doc);
+  		console.log("this is my error " +error);
+  		console.log("doc " + doc);
+  		if (error) return res.status(500).send(error);
+  		res.send(doc);
   		// if (!err) {
   		// 	res.status(200).send(doc);
   		// }
@@ -70,5 +59,19 @@ router.route('/')
       res.send({'message': 'success'});
     });
   });
+
+  // router.route('/')
+//   .get(function(req, res) {
+//     Airplane.find(function(err, airplanes) {
+//       if (err) return res.status(500).send(err);
+//       res.send(airplanes);
+//     });
+//   })
+//   .post(function(req, res) {
+//     Airplane.create(req.body, function(err, airplane) {
+//       if (err) return res.status(500).send(err);
+//       res.send(airplane);
+//     });
+//   });
 
 module.exports = router;

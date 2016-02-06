@@ -2,15 +2,16 @@
 <div class="container">
 <!-- <h1> showGrade.html <small>let's put some info about the restaurant and then use a custom directive or filter to display a letter grade for the restaurant </small> </h1> -->
 
-<h2>&hearts; {{business[0].name}} &hearts; total violation points for {{business[0].inspection_date |date : format : short}} &rarr; {{business[0].inspection_score}}</h2>
+<h2>{{business[0].name}} <h2>total violation points on {{business[0].inspection_date |date : format : short}} &rarr; {{business[0].inspection_score}}</h2>
 </div>
 
 <div>
-	<h1> Your rating is ... {{business[0].inspection_score | graded}} </h1>
+	<h1> Your rating is ... </h1>
+	<h1 id="grade">{{business[0].inspection_score | graded}}<h1>
 </div>
 
 <div> 
-	<h3> Is this place a Dirty Dish? </h3>
+	<h3>Do you think this place is a Dirty Dish? </h3>
 	<form>
   		<input type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
   		<input type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
@@ -19,7 +20,7 @@
 	</form>
 </div>
 
-<!-- <div ng-show="showVotes"> -->
-<div>
+<div ng-show="addVotes">
+<!-- <div> -->
 	<h3> Yes: {{vote.yes_count}} | No: {{vote.no_count}} </h3>
 </div>
