@@ -15,12 +15,12 @@
 	<form>
   		<input type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
   		<input type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
-  		<input type="submit" class="btn btn-primary" ng-click="addVotes()">
-  		<!-- this will be a find or create/ , if found, then update yes/no, if not found, create -->
+  		<input type="submit" class="btn btn-primary" ng-click="addVotes();isDisplayed = !isDisplayed">
 	</form>
 </div>
 
-<div ng-show="addVotes">
-<!-- <div> -->
-	<h3> Yes: {{vote.yes_count}} | No: {{vote.no_count}} </h3>
+<!-- the vote count will display upon the vote submit click -->
+<div ng-show="isDisplayed">
+	<h3>Yes: {{vote.yes_count}}</h3>
+	<h3>No: {{vote.no_count}} </h3>
 </div>
