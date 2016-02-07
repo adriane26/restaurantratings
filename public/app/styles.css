@@ -31,9 +31,9 @@ body {
  
  #violationPoints {
  	font-family: "Special Elite";
- 	font-size: 48px;
+ 	font-size: 54px;
  	color: #0F38A0;
- 	animation: pulse;
+ 	animation: pulse 1.3s;
  }
 
  #radio1, #radio2 {
@@ -43,8 +43,12 @@ body {
  	margin-right: 8px;
  }
 
-#dirtyDishFont {
+.dirtyDishFont {
 	font-family: "Special Elite";
+}
+
+h1.dirtyDishFont {
+	font-size: 54px;
 }
 
 

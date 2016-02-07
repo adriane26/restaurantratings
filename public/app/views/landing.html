@@ -1,7 +1,10 @@
 
 <div class="container">
-<h1>Dirty Dishes</h1>
+
+<div class="page-header text-center">
+<h1 class="dirtyDishFont">Dirty Dishes</h1>
 <h2>Did your restaurant pass inspection?</h2>
+</div>
 
 	<form class="form" ng-submit="search()">
   		<div class="form-group">
@@ -14,7 +17,7 @@
   <div ng-if="restaurants.length != 0" class="well well-sm" ng-repeat="restaurant in restaurants">
   <h2> <!-- ng-click="addToFoodPlace()" -->
     <a ng-href="/restaurant/{{restaurant.business_id}}" ng-click="saveFoodPlace(restaurant)">
-          {{restaurant.name}}</a> -<small> {{restaurant.address}} | {{restaurant.city}}</small>
+          {{restaurant.name}}</a> -<small> {{restaurant.address}} | {{restaurant.city}} <br>inspected on {{restaurant.inspection_date | date : format : short}}</small>
   </h2>
 </div> <!-- closes ng-repeat div -->
 </div> <!-- closes mainCtrl, -->

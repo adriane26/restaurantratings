@@ -13,6 +13,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: 'app/views/showGrade.html',
     controller: 'ShowCtrl'
   })
+  .when('/about',{
+    templateUrl: 'app/views/about.html'
+  })
   .otherwise({
     templateUrl: 'app/views/404.html'
   });
