@@ -22,16 +22,16 @@
 </div><!-- closes violation points/grade row -->
 
 <div class="row"> 
-	<div class="col-md-12">
-		<h3>Do you think this place is a Dirty Dish? </h3>
-	</div>
+	<!-- <div class="col-md-12"> -->
+		<h3>Do you think this place is a <span id="dirtyDishFont">Dirty Dish?</span></h3>
+	<!-- </div> -->
 </div>
 
 <div class="row">
 	<div clas="col-md-10">
 		<form ng-hide="isDisplayed">
-  		<input class="radio" type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
-  		<input class="radio" type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
+  		<input id="radio1" type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
+  		<input id="radio2" type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
   		<input type="submit" class="btn btn-warning" ng-click="addVotes();isDisplayed = !isDisplayed">
 		</form>
 	</div>
@@ -41,7 +41,7 @@
 <div class="row">
 	<div class="col-md-12 text-center" ng-show="isDisplayed">
 		<h3 id="yes">Yes: {{vote.yes_count}}</h3>
-		<h3 id="no">No: {{vote.no_count}} </h3>
+		<h3 id="no">No: {{vote.no_count}}</h3>
 	</div>
 </div>
 </div> <!--closes row -->

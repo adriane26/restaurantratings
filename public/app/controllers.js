@@ -93,7 +93,7 @@ appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', f
 
   }; /// closes addVotes()
 
-// #0F38A0
+
 
   // Restaurant = {
   //   id : $routeParams.id
