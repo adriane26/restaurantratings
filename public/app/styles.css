@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Karla:400,700);*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Special+Elite|Source+Sans+Pro|Karla|Alegreya+Sans);
+
 
 
 	/*I want a typewriter/stamp looking font for grade. have a stamp animation*/
@@ -14,3 +16,20 @@ body {
 */	/*background-color: blue;*/
 }
 
+#grade {
+	font-family: "Special Elite";
+	font-size: 120px;
+	/*color: #801515;*/
+	color: #AB1818;
+	animation: bounceIn 1.2s;
+}
+
+#yes, #no {
+	animation: zoomIn 1s;
+	font-size: 24px;
+}
+ 
+ #violationPoints {
+ 	font-family: "Special Elite";
+ 	font-size: 48px;
+ }

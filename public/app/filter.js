@@ -34,17 +34,17 @@ appFilters.filter('graded', function(){
 });
 
 
-appFilters.filter('yesOrNo', function(){
-	return function() {
-		if(Vote.yes_count >= Vote.no_count) {
-			//// span id="yes" turns red
-			document.querySelector("#yes").style.color = "red";
-		} else {
-			/// span id="no" turns red 
-			document.querySelector("#no").style.color = "red";
-		}
-	}
-});
+// appFilters.filter('yesOrNo', function(){
+// 	return function() {
+// 		if(Vote.yes_count >= Vote.no_count) {
+// 			//// span id="yes" turns red
+// 			document.querySelector("#yes").style.color = "red";
+// 		} else {
+// 			/// span id="no" turns red 
+// 			document.querySelector("#no").style.color = "red";
+// 		}
+// 	}
+// });
 
 
 // //// this will filter results, modify to filter search results

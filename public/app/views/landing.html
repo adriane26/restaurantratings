@@ -1,21 +1,20 @@
 
-<!-- <button><a href="/#!/about">About Page</a></button> -->
-<h1>Dirty Dishes</h1>
-
-<h2>Did your restaurant pass inspection?</h2>
 <div class="container">
+<h1>Dirty Dishes</h1>
+<h2>Did your restaurant pass inspection?</h2>
+
 	<form class="form" ng-submit="search()">
   		<div class="form-group">
     		<label>Let's find out:</label>
-    		<input type="text" class="form-control" ng-model="searchTerm" placeholder="Search by restaurant name, city, address">
+    		<input type="text" class="form-control" ng-model="searchTerm" placeholder="Search by restaurant name, city, or address">
     		<input type="submit" class="btn btn-primary">
   		</div>
 	</form>
+
   <div ng-if="restaurants.length != 0" class="well well-sm" ng-repeat="restaurant in restaurants">
   <h2> <!-- ng-click="addToFoodPlace()" -->
     <a ng-href="/restaurant/{{restaurant.business_id}}" ng-click="saveFoodPlace(restaurant)">
-          {{restaurant.name}} - {{restaurant.address}}
-    </a>
+          {{restaurant.name}}</a> -<small> {{restaurant.address}} | {{restaurant.city}}</small>
   </h2>
 </div> <!-- closes ng-repeat div -->
 </div> <!-- closes mainCtrl, -->

@@ -1,28 +1,55 @@
 <!-- showGrade.html -->
 <div class="container">
 <!-- <h1> showGrade.html <small>let's put some info about the restaurant and then use a custom directive or filter to display a letter grade for the restaurant </small> </h1> -->
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1>{{business[0].name}}</h1>
+		<h3>{{business[0].address}} | {{business[0].city}}</h3>
+	</div>
+</div> <!-- closes place headline row -->
+<hr>
 
-<h2>{{business[0].name}} <h2>total violation points on {{business[0].inspection_date |date : format : short}} &rarr; {{business[0].inspection_score}}</h2>
+
+<div class="row">
+	<div class="col-md-6 text-center">
+		<h1 id="yourRatingIs"> Your rating is ... </h1>
+		<h1 id="grade">{{business[0].inspection_score | graded}}<h1>
+	</div>
+	<div class="col-md-6 text-center">
+		<h2>Total violation points on <br> {{business[0].inspection_date |date : format : short}} :</h2> 
+		<h2 id="violationPoints">{{business[0].inspection_score}}</h2>
+	</div>
+</div><!-- closes violation points/grade row -->
+
+<div class="row"> 
+	<div class="col-md-12">
+		<h3>Do you think this place is a Dirty Dish? </h3>
+	</div>
 </div>
 
-<div>
-	<h1> Your rating is ... </h1>
-	<h1 id="grade">{{business[0].inspection_score | graded}}<h1>
-</div>
-
-<div> 
-	<h3>Do you think this place is a Dirty Dish? </h3>
-	<form>
-  		<input type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
-  		<input type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
-  		<input type="submit" class="btn btn-primary" ng-click="addVotes();isDisplayed = !isDisplayed">
-	</form>
-</div>
+<div class="row">
+	<div clas="col-md-10">
+		<form ng-hide="isDisplayed">
+  		<input class="radio" type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
+  		<input class="radio" type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
+  		<input type="submit" class="btn btn-warning" ng-click="addVotes();isDisplayed = !isDisplayed">
+		</form>
+	</div>
+</div> <!-- closes form row -->
 
 <!-- the vote count will display upon the vote submit click -->
-
-<div ng-show="isDisplayed">
-<!-- <chartist class="ct-chart" chartist-data="chartist.barData" chartist-chart-type="Bar"></chartist> -->
-	<h3 id="yes">Yes: {{vote.yes_count}}</h3>
-	<h3 id="no">No: {{vote.no_count}} </h3>
+<div class="row">
+	<div class="col-md-12 text-center" ng-show="isDisplayed">
+		<h3 id="yes">Yes: {{vote.yes_count}}</h3>
+		<h3 id="no">No: {{vote.no_count}} </h3>
+	</div>
 </div>
+</div> <!--closes row -->
+
+
+
+</div> <!-- closes page container -->
+
+
+
+

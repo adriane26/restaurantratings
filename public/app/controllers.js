@@ -79,13 +79,13 @@ appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', f
       console.log("this is my yes_count " + $scope.vote.yes_count);
       console.log("this is my no_count " + $scope.vote.no_count);
 
-//////// filter built into function ...
+//////// filter built into function
       if($scope.vote.yes_count >= $scope.vote.no_count) {
       //// span id="yes" turns red
-      document.querySelector("#yes").style.color = "red";
+      ((document.querySelector("#yes").style.color = "#AB1818") && (document.querySelector("#yes").style.fontWeight = "900"));
     } else {
       /// span id="no" turns red 
-      document.querySelector("#no").style.color = "red";
+      ((document.querySelector("#no").style.color = "#009900") && (document.querySelector("#no").style.fontWeight = "900"));
     }
   	}, function error(data) {
   		console.log(data);
@@ -93,6 +93,7 @@ appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', f
 
   }; /// closes addVotes()
 
+// #0F38A0
 
   // Restaurant = {
   //   id : $routeParams.id
