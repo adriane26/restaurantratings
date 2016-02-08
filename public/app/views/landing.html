@@ -15,7 +15,7 @@
 	</form>
 
   <div ng-if="restaurants.length != 0" class="well well-sm" ng-repeat="restaurant in restaurants">
-  <h2> <!-- ng-click="addToFoodPlace()" -->
+  <h2>
     <a ng-href="/restaurant/{{restaurant.business_id}}" ng-click="saveFoodPlace(restaurant)">
           {{restaurant.name}}</a> -<small> {{restaurant.address}} | {{restaurant.city}} <br>inspected on {{restaurant.inspection_date | date : format : short}}</small>
   </h2>

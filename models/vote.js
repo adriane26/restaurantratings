@@ -4,12 +4,7 @@ var voteSchema = new mongoose.Schema({
   business_id: String,
   no_count: {type: Number, default: 0},
   yes_count: {type: Number, default: 0}
-  // created_at: Date,
-  // updated_at: Date
 });
-
-
-
 
 var Vote = mongoose.model('Vote', voteSchema);
 

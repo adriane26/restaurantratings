@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular-chartist.js": "^3.3.13",
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
     "mongoose": "^4.3.7",

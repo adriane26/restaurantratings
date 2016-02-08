@@ -13,18 +13,14 @@ restaurantServices.service('FoodPlace', [ function(){
  function get() {
   return savedData;
  }
-
  return {
   set: set,
   get: get
  }
-
 }]);
 
 ///////// VOTE SERVICE /////////
 restaurantServices.service('Vote', ['$resource', function($resource){
-
 	return $resource('/restaurant/:id');
-	// would this be('/restaurant/')?
 }]);
 
