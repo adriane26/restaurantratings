@@ -2,14 +2,13 @@
 <div class="container">
 <!-- <h1> showGrade.html <small>let's put some info about the restaurant and then use a custom directive or filter to display a letter grade for the restaurant </small> </h1> -->
 <div class="row">
-	<div class="col-md-12 text-center">
+	<div class="col-md-12 text-center headline">
 		<h1>{{business[0].name}}</h1>
 		<h3>{{business[0].address}} | {{business[0].city}}</h3>
 	</div>
+	<hr>
 </div> <!-- closes place headline row -->
-<hr>
-
-
+<br>
 <div class="row">
 	<div class="col-md-6 text-center">
 		<h1 id="yourRatingIs"> Your rating is ... </h1>
@@ -32,7 +31,7 @@
 		<form ng-hide="isDisplayed">
   		<input id="radio1" type="radio" name="voteClick" ng-change="changeChoice(yesVote)" value="yes" ng-model="yesVote">Yes<br>
   		<input id="radio2" type="radio" name="voteClick" ng-change="changeChoice(noVote)" value="no" ng-model="noVote">No<br>
-  		<input type="submit" class="btn btn-warning" ng-click="addVotes();isDisplayed = !isDisplayed">
+  		<input type="submit" class="btn btn-primary" ng-click="addVotes();isDisplayed = !isDisplayed">
 		</form>
 	</div>
 </div> <!-- closes form row -->
