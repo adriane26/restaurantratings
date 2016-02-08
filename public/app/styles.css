@@ -1,12 +1,8 @@
 /*@import url(https://fonts.googleapis.com/css?family=Karla:400,700);*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans|Special+Elite|Source+Sans+Pro|Karla|Alegreya+Sans);
 
-
-
-	/*I want a typewriter/stamp looking font for grade. have a stamp animation*/
-
 body {
-	font-family: "Open Sans", sans-serif;
+	font-family: "Karla", sans-serif;
 	background: url("images/extra_clean_paper.png");
 	/*background: gray;*/
 }
@@ -24,14 +20,14 @@ body {
 	font-size: 24px;
 }
  
- #violationPoints {
+#violationPoints {
  	font-family: "Special Elite";
- 	font-size: 54px;
+ 	font-size: 58px;
  	color: #0F38A0;
  	animation: pulse 1.3s;
- }
+}
 
- #radio1, #radio2 {
+#radio1, #radio2 {
  	/*padding-bottom: 10px;*/
  	margin-bottom: 10px;
  	/*color: green;*/
