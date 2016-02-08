@@ -5,4 +5,4 @@ I built this app using a MEAN stack (MongoDB, Express, Angular and Node), bootst
 
 If you'd like to fork this repo and install the app, you'll need an app token from [data.kingcounty.gov](https://dev.socrata.com/foundry/data.kingcounty.gov/gkhn-e8mn). Just run 'npm install' to install the dependencies, create your .env with your app token, and you're good to go!
 
-Launch it online at [www.dirty-dishes.herokuapp.com](dirty-dishes.herokuapp.com)
+Launch it online at [dirty-dishes.herokuapp.com](http://www.dirty-dishes.herokuapp.com)
