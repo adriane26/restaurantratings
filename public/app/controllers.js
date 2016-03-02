@@ -19,6 +19,7 @@ appCtrls.controller('MainCtrl', ['$scope', '$http', '$routeParams', 'FoodPlace',
     }
     }, function error(response){
       console.log(response);
+      alert("No search results found, please try again");
     });
     $scope.searchTerm = '';
   };
