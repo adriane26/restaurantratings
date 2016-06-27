@@ -14,10 +14,13 @@
   		</div>
 	</form>
 
-  <div ng-if="restaurants.length != 0" class="well well-sm" ng-repeat="restaurant in restaurants">
-  <h2>
-    <a ng-href="/restaurant/{{restaurant.business_id}}" ng-click="saveFoodPlace(restaurant)">
+  <div ng-if="restaurants.length != 0" class="well well-sm" ng-repeat="restaurant in restaurants | orderBy: ['name', '-inspection_date']">
+    <h2>
+      <a ng-href="/restaurant/{{restaurant.business_id}}" ng-click="saveFoodPlace(restaurant)">
           {{restaurant.name}}</a> -<small> {{restaurant.address}} | {{restaurant.city}} <br>inspected on {{restaurant.inspection_date | date : format : short}}</small>
-  </h2>
-</div> <!-- closes ng-repeat div -->
+    </h2>
+  </div> <!-- closes ng-repeat div -->
+ <!--  <div ng-if="((searchTerm != '') && (restaurants.length === 0))">
+    <h1> No results found, please try your search again </h1>
+  </div>  -->
 </div> <!-- closes mainCtrl, -->

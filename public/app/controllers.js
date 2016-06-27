@@ -10,7 +10,7 @@ appCtrls.controller('MainCtrl', ['$scope', '$http', '$routeParams', 'FoodPlace',
 
   $scope.search = function(){
     var req = {
-    url: '/api/restaurants/'+$scope.searchTerm,
+    url: '/api/restaurants/' + $scope.searchTerm,
     method: 'GET'
     }
     $http(req).then(function success(response){

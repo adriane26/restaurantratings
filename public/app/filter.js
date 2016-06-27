@@ -12,8 +12,11 @@ var appFilters = angular.module('RestaurantFilters', ['RestaurantServices']);
         case points <= 60:
           return "C";
           break;
-        default:
+        case points > 60:
           return "F";
+          break;
+        default:
+          return "?";
       }
     }
   });
