@@ -6,27 +6,22 @@ var request = require('request');
 var router = express.Router();
 
 router.get('/', function(req, res){
-	console.log('here')
   // res.sendFile('./public/app/views/landing.html');
 });
 
 router.get('/restaurants/:searchTerm', function(req, res){
 //// this is request/ npm
-var options = {
-  url: ('https://data.kingcounty.gov/resource/gkhn-e8mn.json?$$app_token='+process.env.APP_TOKEN+'&$q='+req.params.searchTerm)
-};
- 
-function callback(error, response, body) {
-	console.log('this is inside the named callback')
-  if (!error && response.statusCode == 200) {
-    var info = JSON.parse(body);
-  }
-};
-request(options, function(err, response, body){
-	// console.log(options);
-	res.send(JSON.parse(response.body))
-});
-
+	var options = {
+  	url: ('https://data.kingcounty.gov/resource/gkhn-e8mn.json?$$app_token='+process.env.APP_TOKEN+'&$q='+req.params.searchTerm)
+	};
+	function callback(error, response, body) {
+  	if (!error && response.statusCode == 200) {
+    	var info = JSON.parse(body);
+  	}
+	};
+	request(options, function(err, response, body){
+		res.send(JSON.parse(response.body))
+	});
 //// below closes the router.get api/restaurants
 });
 

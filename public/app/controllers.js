@@ -32,26 +32,19 @@ appCtrls.controller('MainCtrl', ['$scope', '$http', '$routeParams', 'FoodPlace',
 ///////////THIS WILL DISPLAY THE EXTENDED VIEW/INFO AND THE LETTER GRADE
 appCtrls.controller('ShowCtrl', ['$scope','$routeParams', 'FoodPlace', 'Vote', function($scope, $routeParams, FoodPlace, Vote){
   $scope.business = FoodPlace.get();
-  console.log($scope.business);
   $scope.yesVote;
   $scope.noVote;
   $scope.vote;
 
   $scope.changeChoice = function(choice) {
   	$scope.vote = choice;
-  	console.log('My Choice', choice);
-  	console.log('My vote being sent', $scope.vote);
   }
 
   ////////// let's add in database things here.
   $scope.addVotes = function(){
 
   	Vote.save({business_id: $routeParams.id, vote: $scope.vote}, function success(data) {
-  		// console.log("this is my data" +data);
   		$scope.vote = data;
-      console.log("this is $scope.vote " + $scope.vote);
-      console.log("this is my yes_count " + $scope.vote.yes_count);
-      console.log("this is my no_count " + $scope.vote.no_count);
 
 //////// filter built into function
       if($scope.vote.yes_count >= $scope.vote.no_count) {

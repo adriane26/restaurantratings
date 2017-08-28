@@ -3,8 +3,6 @@ var express = require('express');
 var Vote = require('../models/vote');
 var router = express.Router();
 
-
-
 router.route('/')
   .post(function(req, res) {
   	console.log(req.body);
@@ -26,8 +24,6 @@ router.route('/')
   	};
 
   	Vote.findOneAndUpdate({business_id: req.body.business_id}, update, options, function(error, doc){
-  		console.log("this is my error " +error);
-  		console.log("doc " + doc);
   		if (error) return res.status(500).send(error);
   		res.send(doc);
   	});

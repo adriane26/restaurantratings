@@ -3,7 +3,7 @@ var restaurantServices = angular.module('RestaurantServices', ['ngResource']);
 //// this will save our current restaurant object for use in different controllers /////
 restaurantServices.service('FoodPlace', [ function(){
 
- var savedData = []
+ var savedData = [];
  function set(data) {
  	if(savedData.length){
  		savedData.pop();
